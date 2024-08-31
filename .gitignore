@@ -1,0 +1,9 @@
+*.mkeys
+*.jnl
+*.nzd
+*.key
+
+*/data
+!data/.gitkeep
+
+

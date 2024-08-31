@@ -1,0 +1,20 @@
+services:
+  bind:
+    image: internetsystemsconsortium/bind9:9.20
+    container_name: bind
+    restart: always
+    entrypoint: ["/app/entrypoint.sh"]
+    volumes:
+      - ./bind/volumes/data:/var/cache/bind
+      - ./bind/volumes/conf/named.conf.options:/etc/bind/named.conf.options
+      - ./bind/volumes/conf/named.conf.local:/etc/bind/named.conf.local
+      - ./bind/volumes/conf/named.conf.default-zones:/etc/bind/named.conf.default-zones
+      - ./bind/volumes/conf/rndc-int.key:/etc/bind/rndc-int.key
+      - ./bind/volumes/conf/rndc-ext.key:/etc/bind/rndc-ext.key
+      - ./bind/volumes/scripts:/app/
+    ports:
+      - '53:53/tcp'
+      - '53:53/udp'
+      - '953:953/tcp'
+      - '953:953/udp'
+
